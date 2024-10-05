@@ -1,0 +1,267 @@
+[
+  {
+    "City": "Accra",
+    "AirportName": "Kotoka International Airport",
+    "ShortCode": "ACC"
+  },
+  {
+    "City": "Addis Ababa",
+    "AirportName": "Bole International Airport",
+    "ShortCode": "ADD"
+  },
+  {
+    "City": "Amsterdam",
+    "AirportName": "Amsterdam Airport Schiphol",
+    "ShortCode": "AMS"
+  },
+  {
+    "City": "Antananarivo",
+    "AirportName": "Ivato International Airport",
+    "ShortCode": "TNR"
+  },
+  {
+    "City": "Athens",
+    "AirportName": "Athens International Airport",
+    "ShortCode": "ATH"
+  },
+  {
+    "City": "Arba Minch",
+    "AirportName": "Arba Minch Airport",
+    "ShortCode": "ABR"
+  },
+  {
+    "City": "Asosa",
+    "AirportName": "Asosa Airport",
+    "ShortCode": "ASO"
+  },
+  {
+    "City": "Axum",
+    "AirportName": "Axum Airport",
+    "ShortCode": "AXU"
+  },
+  {
+    "City": "Awasa",
+    "AirportName": "Awasa Airport",
+    "ShortCode": "AWA"
+  },
+  {
+    "City": "Bahir Dar",
+    "AirportName": "Bahir Dar Airport",
+    "ShortCode": "BJR"
+  },
+  {
+    "City": "Beirut",
+    "AirportName": "Rafic Hariri International Airport",
+    "ShortCode": "BEY"
+  },
+  {
+    "City": "Berlin",
+    "AirportName": "Tegel Airport",
+    "ShortCode": "TXL"
+  },
+  {
+    "City": "Cairo",
+    "AirportName": "Cairo International Airport",
+    "ShortCode": "CAI"
+  },
+  {
+    "City": "Dembidolo",
+    "AirportName": "Dembidolo Airport",
+    "ShortCode": "DEM"
+  },
+  {
+    "City": "Dessie",
+    "AirportName": "Dessie Airport",
+    "ShortCode": "DSE"
+  },
+  {
+    "City": "Dire Dawa",
+    "AirportName": "Dire Dawa Airport",
+    "ShortCode": "DIR"
+  },
+  {
+    "City": "Dubai",
+    "AirportName": "Dubai International Airport",
+    "ShortCode": "DXB"
+  },
+  {
+    "City": "Frankfurt",
+    "AirportName": "Frankfurt Airport",
+    "ShortCode": "FRA"
+  },
+  {
+    "City": "Goba",
+    "AirportName": "Goba Airport",
+    "ShortCode": "GOB"
+  },
+  {
+    "City": "Gode",
+    "AirportName": "Gode Airport",
+    "ShortCode": "GDE"
+  },
+  {
+    "City": "Gondar",
+    "AirportName": "Gondar Airport",
+    "ShortCode": "GDQ"
+  },
+  {
+    "City": "Humera",
+    "AirportName": "Humera Airport",
+    "ShortCode": "HUE"
+  },
+  {
+    "City": "Istanbul",
+    "AirportName": "Istanbul Airport",
+    "ShortCode": "IST"
+  },
+  {
+    "City": "Jeddah",
+    "AirportName": "King Abdulaziz International Airport",
+    "ShortCode": "JED"
+  },
+  {
+    "City": "Johannesburg",
+    "AirportName": "OR Tambo International Airport",
+    "ShortCode": "JNB"
+  },
+  {
+    "City": "Jijiga",
+    "AirportName": "Jijiga Airport",
+    "ShortCode": "JIJ"
+  },
+  {
+    "City": "Jimma",
+    "AirportName": "Jimma Airport",
+    "ShortCode": "JIM"
+  },
+  {
+    "City": "Kebri Dahar",
+    "AirportName": "Kebri Dahar Airport",
+    "ShortCode": "KBD"
+  },
+  {
+    "City": "Lalibela",
+    "AirportName": "Lalibela Airport",
+    "ShortCode": "LLI"
+  },
+  {
+    "City": "Lagos",
+    "AirportName": "Murtala Muhammed International Airport",
+    "ShortCode": "LOS"
+  },
+  {
+    "City": "Los Angeles",
+    "AirportName": "Los Angeles International Airport",
+    "ShortCode": "LAX"
+  },
+  {
+    "City": "Madrid",
+    "AirportName": "Barajas Airport",
+    "ShortCode": "MAD"
+  },
+  {
+    "City": "Melbourne",
+    "AirportName": "Melbourne Airport",
+    "ShortCode": "MEL"
+  },
+  {
+    "City": "Miami",
+    "AirportName": "Miami International Airport",
+    "ShortCode": "MIA"
+  },
+  {
+    "City": "Mumbai",
+    "AirportName": "Chhatrapati Shivaji Maharaj International Airport",
+    "ShortCode": "BOM"
+  },
+  {
+    "City": "Nairobi",
+    "AirportName": "Jomo Kenyatta International Airport",
+    "ShortCode": "NBO"
+  },
+  {
+    "City": "New York",
+    "AirportName": "John F. Kennedy International Airport",
+    "ShortCode": "JFK"
+  },
+  {
+    "City": "Paris",
+    "AirportName": "Charles de Gaulle Airport",
+    "ShortCode": "CDG"
+  },
+  {
+    "City": "Rome",
+    "AirportName": "Leonardo da Vinci–Fiumicino Airport",
+    "ShortCode": "FCO"
+  },
+  {
+    "City": "São Paulo",
+    "AirportName": "Guarulhos International Airport",
+    "ShortCode": "GRU"
+  },
+  {
+    "City": "Semera",
+    "AirportName": "Semera Airport",
+    "ShortCode": "SMN"
+  },
+  {
+    "City": "Tel Aviv",
+    "AirportName": "Ben Gurion Airport",
+    "ShortCode": "TLV"
+  },
+  {
+    "City": "Washington D.C.",
+    "AirportName": "Dulles International Airport",
+    "ShortCode": "IAD"
+  },
+  {
+    "City": "Entebbe",
+    "AirportName": "Entebbe International Airport",
+    "ShortCode": "EBB"
+  },
+  {
+    "City": "Harare",
+    "AirportName": "Robert Gabriel Mugabe International Airport",
+    "ShortCode": "HRE"
+  },
+  {
+    "City": "Lusaka",
+    "AirportName": "Kenneth Kaunda International Airport",
+    "ShortCode": "LUN"
+  },
+  {
+    "City": "Kigali",
+    "AirportName": "Kigali International Airport",
+    "ShortCode": "KGL"
+  },
+  {
+    "City": "N'djamena",
+    "AirportName": "N'Djamena International Airport",
+    "ShortCode": "NDJ"
+  },
+  {
+    "City": "Blantyre",
+    "AirportName": "Chileka International Airport",
+    "ShortCode": "BLZ"
+  },
+  {
+    "City": "Ndola",
+    "AirportName": "Simon Mwansa Kapwepwe International Airport",
+    "ShortCode": "NLA"
+  },
+  {
+    "City": "Malabo",
+    "AirportName": "Malabo International Airport",
+    "ShortCode": "SSG"
+  },
+  {
+    "City": "Khartoum",
+    "AirportName": "Khartoum International Airport",
+    "ShortCode": "KRT"
+  },
+  {
+    "City": "Victoria Falls",
+    "AirportName": "Victoria Falls International Airport",
+    "ShortCode": "VFA"
+  }
+]
