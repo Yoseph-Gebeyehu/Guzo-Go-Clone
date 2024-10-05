@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:guzo_go_clone/presentation/home/provivder/home_provider.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/location.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/trip_type.dart';
+import 'package:provider/provider.dart';
+import 'package:guzo_go_clone/data/model/Airport.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,8 +16,22 @@ class _HomePageState extends State<HomePage> {
   bool oneWay = false;
 
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<HomeProvider>(context, listen: false).fetchStartingAirports();
+      Provider.of<HomeProvider>(context, listen: false)
+          .fetchDestinationAirports();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
+    HomeProvider? homeProvider = Provider.of<HomeProvider>(context);
+    List<Airport> startingAirportList = homeProvider.filteredStartingAirports;
+    List<Airport> destinationAirportList =
+        homeProvider.filteredDestinationAirports;
 
     return Scaffold(
       body: Column(
@@ -31,8 +48,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Positioned.fill(
                   child: Container(
-                    color:
-                        const Color.fromARGB(255, 10, 16, 72).withOpacity(0.8),
+                    color: Theme.of(context).primaryColor.withOpacity(0.8),
                   ),
                 ),
                 Padding(
@@ -64,11 +80,18 @@ class _HomePageState extends State<HomePage> {
                               Icons.notifications,
                               color: Colors.white,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       TripType(deviceSize: deviceSize, oneWay: oneWay),
-                      LocationWidget(deviceSize: deviceSize),
+                      startingAirportList.isEmpty ||
+                              destinationAirportList.isEmpty
+                          ? const CircularProgressIndicator()
+                          : LocationWidget(
+                              startingAirport: startingAirportList[0],
+                              destinationAirport: destinationAirportList[0],
+                              deviceSize: deviceSize,
+                            ),
                     ],
                   ),
                 ),

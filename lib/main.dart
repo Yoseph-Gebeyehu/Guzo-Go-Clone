@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:guzo_go_clone/presentation/home/provivder/home_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:guzo_go_clone/domain/constants/app_theme.dart';
 import 'package:guzo_go_clone/presentation/home/screen/home.dart';
@@ -18,6 +19,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => AirportProvider(context: context),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => HomeProvider(context: context),
         ),
       ],
       child: AdaptiveTheme(

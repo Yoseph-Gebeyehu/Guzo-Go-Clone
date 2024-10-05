@@ -4,8 +4,13 @@ import 'package:provider/provider.dart';
 
 import '../provider/select_airport_provider.dart';
 
+// ignore: must_be_immutable
 class SelectAirportPage extends StatelessWidget {
-  const SelectAirportPage({super.key});
+  SelectAirportPage({
+    super.key,
+    required this.start,
+  });
+  bool start;
 
   @override
   Widget build(BuildContext context) {
@@ -125,10 +130,26 @@ class SelectAirportPage extends StatelessWidget {
                               airportProvider.filteredAirports[index];
                           return Column(
                             children: [
-                              ListTile(
-                                leading: const Icon(Icons.airplanemode_active),
-                                title: Text(
-                                  '${airport.city}, ${airport.airportName} (${airport.shortCode})',
+                              InkWell(
+                                onTap: () async {
+                                  start
+                                      ? await airportProvider
+                                          .addStartingAirportToDB(
+                                          airport: airport,
+                                          context: context,
+                                        )
+                                      : await airportProvider
+                                          .addDestinationAirportToDB(
+                                          airport: airport,
+                                          context: context,
+                                        );
+                                },
+                                child: ListTile(
+                                  leading:
+                                      const Icon(Icons.airplanemode_active),
+                                  title: Text(
+                                    '${airport.city}, ${airport.airportName} (${airport.shortCode})',
+                                  ),
                                 ),
                               ),
                               Divider(
