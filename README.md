@@ -1,16 +1,33 @@
-# guzo_go_clone
+# Guzo Go Clone
 
-A new Flutter project.
+A Flutter-based travel booking application that allows users to search for flights, view cabin classes, and manage their bookings seamlessly. The app provides an intuitive interface for selecting starting and destination airports, trip dates, and passenger information.
+
+## Features
+
+- **Search Flights**: Search for available flights between selected airports.
+- **Trip Management**: Manage one-way and round-trip bookings.
+- **Cabin Classes**: Choose from different cabin classes (Economy, Business, etc.).
+- **Passenger Management**: Add, update, and view passenger information.
+
+## Technologies Used
+
+- **Flutter**: For building the mobile application.
+- **Dart**: Programming language used for Flutter development.
+- **Provider**: State management for efficient data handling.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get a local copy of this project up and running, follow these steps:
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Install [Flutter](https://flutter.dev/docs/get-started/install).
+- Ensure you have an IDE like [VS Code](https://code.visualstudio.com/) or [Android Studio](https://developer.android.com/studio).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/Yoseph-Gebeyehu/Guzo-Go-Clone.git
+   ```
