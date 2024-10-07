@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:guzo_go_clone/data/model/cabin_class.dart';
 import 'package:guzo_go_clone/data/model/trip_date.dart';
 import 'package:guzo_go_clone/presentation/home/provivder/home_provider.dart';
+import 'package:guzo_go_clone/presentation/home/widgets/cabin_class_and_passenger.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/location.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/trip_date_widget.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/trip_type.dart';
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
           .fetchDestinationAirports();
       Provider.of<HomeProvider>(context, listen: false).fetchDepartureDate();
       Provider.of<HomeProvider>(context, listen: false).fetchReturnDate();
+      Provider.of<HomeProvider>(context, listen: false).fetchCabinClasses();
     });
     super.initState();
   }
@@ -32,13 +35,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
-    HomeProvider? homeProvider = Provider.of<HomeProvider>(context);
+    HomeProvider homeProvider = Provider.of<HomeProvider>(context);
 
     List<Airport> startingAirportList = homeProvider.filteredStartingAirports;
     List<Airport> destinationAirportList =
         homeProvider.filteredDestinationAirports;
     TripDate? departureDate = homeProvider.departureDate;
     TripDate? returnDate = homeProvider.returnDate;
+
+    CabinClass? cabinClass = homeProvider.cabinClass;
+
     return Scaffold(
       body: Column(
         children: [
@@ -109,6 +115,16 @@ class _HomePageState extends State<HomePage> {
               : TripDateWidget(
                   departureDate: departureDate,
                   returnDate: returnDate,
+                ),
+          // Check if cabinClass is null before using it
+          cabinClass == null
+              ? CabinClassAndPassenger(
+                  cabinClass: CabinClass(cabinClass: 'Economy'),
+                  homeProvider: homeProvider,
+                )
+              : CabinClassAndPassenger(
+                  cabinClass: cabinClass,
+                  homeProvider: homeProvider,
                 ),
         ],
       ),

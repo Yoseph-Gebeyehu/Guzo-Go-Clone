@@ -49,16 +49,26 @@ class TripDateWidget extends StatelessWidget {
                 color: Colors.grey,
                 width: 0,
               ),
-              Container(
-                padding: EdgeInsets.only(left: deviceSize.width * 0.04),
-                width: deviceSize.width * 0.45,
-                child: tripDateMethod(
-                  deviceSize,
-                  'Return Date',
-                  context,
-                  returnDate.day,
-                  returnDate.month,
-                  returnDate.date,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TripDateSelectorPage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.only(left: deviceSize.width * 0.04),
+                  width: deviceSize.width * 0.45,
+                  child: tripDateMethod(
+                    deviceSize,
+                    'Return Date',
+                    context,
+                    returnDate.day,
+                    returnDate.month,
+                    returnDate.date,
+                  ),
                 ),
               ),
             ],
@@ -83,6 +93,7 @@ class TripDateWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 5),
         Text(label),
         Row(
           children: [
@@ -99,7 +110,7 @@ class TripDateWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  month,
+                  month.substring(0, 3),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: deviceSize.width * 0.04,

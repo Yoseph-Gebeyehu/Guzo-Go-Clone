@@ -17,7 +17,7 @@ class SQLDatabaseService {
     final dbPath = await getDatabasePath();
     return await sql.openDatabase(
       dbPath,
-      version: 8,
+      version: 9,
       onCreate: (Database db, int version) async {
         await db.execute('''
     CREATE TABLE ${AppDatabaseTables.startingAirport} (
@@ -45,6 +45,11 @@ class SQLDatabaseService {
       day TEXT,
       month TEXT, 
       date TEXT
+      )
+      ''');
+        await db.execute('''
+    CREATE TABLE ${AppDatabaseTables.cabinClass} (
+      cabinClass TEXT
       )
       ''');
       },
