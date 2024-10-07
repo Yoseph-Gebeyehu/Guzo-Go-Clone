@@ -44,8 +44,8 @@ class _HomePageState extends State<HomePage> {
     TripDate? returnDate = homeProvider.returnDate;
 
     CabinClass? cabinClass = homeProvider.cabinClass;
-
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           SizedBox(
@@ -116,7 +116,6 @@ class _HomePageState extends State<HomePage> {
                   departureDate: departureDate,
                   returnDate: returnDate,
                 ),
-          // Check if cabinClass is null before using it
           cabinClass == null
               ? CabinClassAndPassenger(
                   cabinClass: CabinClass(cabinClass: 'Economy'),
@@ -126,27 +125,71 @@ class _HomePageState extends State<HomePage> {
                   cabinClass: cabinClass,
                   homeProvider: homeProvider,
                 ),
+          const Spacer(),
+          SizedBox(
+            width: deviceSize.width * 0.8,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).primaryColorDark,
+                elevation: 0,
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onPressed: () {},
+              child: Text(
+                'Search Flights',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: deviceSize.width * 0.04,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: deviceSize.height * 0.05),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey.withOpacity(0.5),
+              width: 1.0,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Booking',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: 'Notifications',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          elevation: 10,
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+                size: 35,
+                weight: 5,
+                color: Theme.of(context).primaryColor,
+              ),
+              label: 'Search',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Booking',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.notifications),
+              label: 'Notifications',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
+        ),
       ),
     );
   }

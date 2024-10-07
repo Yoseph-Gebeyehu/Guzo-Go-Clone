@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:guzo_go_clone/data/model/cabin_class.dart';
+import 'package:guzo_go_clone/data/model/passengers.dart';
 import 'package:guzo_go_clone/data/repository/airport_repository.dart';
 import 'package:guzo_go_clone/data/repository/impl/airport_repositoryImpl.dart';
+import 'package:guzo_go_clone/data/repository/impl/passenger_repositoryImpl.dart';
+import 'package:guzo_go_clone/data/repository/passenger_repository.dart';
 import 'package:guzo_go_clone/data/repository/trip_day_repository.dart';
 import 'package:guzo_go_clone/data/repository/impl/trip_day_repositoryImpl.dart';
 import 'package:intl/intl.dart';
@@ -21,6 +24,8 @@ class HomeProvider with ChangeNotifier {
 
   CabinClass? cabinClass;
 
+  List<Passengers> passengers = [];
+
   bool isLoading = true;
 
   BuildContext context;
@@ -31,6 +36,7 @@ class HomeProvider with ChangeNotifier {
     fetchDepartureDate();
     fetchReturnDate();
     fetchCabinClasses();
+    fetchPassengers();
   }
 
   Future<void> fetchStartingAirports() async {
@@ -160,7 +166,6 @@ class HomeProvider with ChangeNotifier {
       if (cabin.isNotEmpty) {
         cabinClass = cabin.first;
       } else {
-        // Set default value if no cabin class is found
         cabinClass = CabinClass(cabinClass: "Economy");
       }
     } catch (error) {
@@ -193,6 +198,49 @@ class HomeProvider with ChangeNotifier {
       notifyListeners();
     } catch (error) {
       print(error);
+    }
+  }
+
+  Future<void> fetchPassengers() async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      PassengerRepository passengerRepository =
+          PassengerRepositoryImpl(context: context);
+      passengers = await passengerRepository.getPassengers();
+
+      if (passengers.isEmpty) {
+      } else {}
+    } catch (error) {
+      print("Error fetching passengers: $error");
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> addOrUpdatePassenger(Passengers passenger) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      PassengerRepository passengerRepository =
+          PassengerRepositoryImpl(context: context);
+
+      if (passengers.isEmpty) {
+        await passengerRepository.addPassenger(passenger);
+      } else {
+        await passengerRepository.updatePassenger(
+            passengers[0].adult, passenger);
+      }
+
+      passengers = await passengerRepository.getPassengers();
+    } catch (error) {
+      print("Error adding or updating passenger: $error");
+    } finally {
+      isLoading = false;
+      notifyListeners();
     }
   }
 }

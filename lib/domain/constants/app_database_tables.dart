@@ -4,4 +4,5 @@ class AppDatabaseTables {
   static const departureDate = 'departureDate';
   static const returnDate = 'returnDate';
   static const cabinClass = 'cabinClass';
+  static const passenger = 'passenger';
 }

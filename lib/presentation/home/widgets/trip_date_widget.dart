@@ -21,7 +21,7 @@ class TripDateWidget extends StatelessWidget {
         IntrinsicHeight(
           child: Row(
             children: [
-              GestureDetector(
+              InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -49,7 +49,7 @@ class TripDateWidget extends StatelessWidget {
                 color: Colors.grey,
                 width: 0,
               ),
-              GestureDetector(
+              InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
