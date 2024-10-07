@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:guzo_go_clone/data/model/trip_date.dart';
 import 'package:guzo_go_clone/presentation/home/provivder/home_provider.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/location.dart';
+import 'package:guzo_go_clone/presentation/home/widgets/trip_date_widget.dart';
 import 'package:guzo_go_clone/presentation/home/widgets/trip_type.dart';
 import 'package:provider/provider.dart';
 import 'package:guzo_go_clone/data/model/Airport.dart';
@@ -21,6 +23,8 @@ class _HomePageState extends State<HomePage> {
       Provider.of<HomeProvider>(context, listen: false).fetchStartingAirports();
       Provider.of<HomeProvider>(context, listen: false)
           .fetchDestinationAirports();
+      Provider.of<HomeProvider>(context, listen: false).fetchDepartureDate();
+      Provider.of<HomeProvider>(context, listen: false).fetchReturnDate();
     });
     super.initState();
   }
@@ -29,10 +33,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     HomeProvider? homeProvider = Provider.of<HomeProvider>(context);
+
     List<Airport> startingAirportList = homeProvider.filteredStartingAirports;
     List<Airport> destinationAirportList =
         homeProvider.filteredDestinationAirports;
-
+    TripDate? departureDate = homeProvider.departureDate;
+    TripDate? returnDate = homeProvider.returnDate;
     return Scaffold(
       body: Column(
         children: [
@@ -98,6 +104,12 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          (departureDate == null || returnDate == null)
+              ? const CircularProgressIndicator()
+              : TripDateWidget(
+                  departureDate: departureDate,
+                  returnDate: returnDate,
+                ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

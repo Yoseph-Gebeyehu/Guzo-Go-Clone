@@ -3,16 +3,54 @@ import 'package:guzo_go_clone/data/model/Airport.dart';
 import 'package:guzo_go_clone/presentation/airport/screen/select_airport_page.dart';
 
 // ignore: must_be_immutable
-class LocationWidget extends StatelessWidget {
+class LocationWidget extends StatefulWidget {
   LocationWidget({
     super.key,
     required this.deviceSize,
     required this.startingAirport,
     required this.destinationAirport,
   });
-  Size deviceSize;
+
+  final Size deviceSize;
   Airport startingAirport;
   Airport destinationAirport;
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _LocationWidgetState createState() => _LocationWidgetState();
+}
+
+class _LocationWidgetState extends State<LocationWidget> {
+  Color startingTextColor = Colors.white;
+  Color destinationTextColor = Colors.white;
+
+  void swapAirports() {
+    setState(() {
+      final temp = widget.startingAirport;
+      widget.startingAirport = widget.destinationAirport;
+      widget.destinationAirport = temp;
+    });
+  }
+
+  void changeTextColorOnLongPress({required bool isStarting}) {
+    setState(() {
+      if (isStarting) {
+        startingTextColor = Colors.white24;
+      } else {
+        destinationTextColor = Colors.white24;
+      }
+    });
+  }
+
+  void resetTextColor({required bool isStarting}) {
+    setState(() {
+      if (isStarting) {
+        startingTextColor = Colors.white;
+      } else {
+        destinationTextColor = Colors.white;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,42 +69,75 @@ class LocationWidget extends StatelessWidget {
                   ),
                 );
               },
+              onLongPress: () {
+                changeTextColorOnLongPress(isStarting: true);
+              },
+              onLongPressEnd: (_) {
+                resetTextColor(isStarting: true);
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
-                    'From',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    startingAirport.shortCode,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  Text(
-                    startingAirport.city,
-                    style: const TextStyle(color: Colors.white, fontSize: 14),
-                  ),
-                  Text(
-                    startingAirport.airportName,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
+                  widget.startingAirport.airportName.isEmpty
+                      ? Column(
+                          children: [
+                            Text(
+                              'From',
+                              style: TextStyle(
+                                  color: destinationTextColor, fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              'Destination',
+                              style: TextStyle(
+                                color: destinationTextColor,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            Text(
+                              'From',
+                              style: TextStyle(
+                                  color: startingTextColor, fontSize: 16),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              widget.startingAirport.shortCode,
+                              style: TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                                color: startingTextColor,
+                              ),
+                            ),
+                            Text(
+                              widget.startingAirport.city,
+                              style: TextStyle(
+                                  color: startingTextColor, fontSize: 14),
+                            ),
+                            Text(
+                              widget.startingAirport.airportName,
+                              style: TextStyle(
+                                color: startingTextColor,
+                                fontSize: 12,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        )
                 ],
               ),
             ),
           ),
-          const Icon(
-            Icons.swap_horiz,
-            color: Colors.white,
-            size: 30,
+          IconButton(
+            icon: const Icon(
+              Icons.swap_horizontal_circle,
+              color: Colors.white,
+              size: 30,
+            ),
+            onPressed: swapAirports,
           ),
           Expanded(
             child: GestureDetector(
@@ -78,22 +149,28 @@ class LocationWidget extends StatelessWidget {
                   ),
                 );
               },
+              onLongPress: () {
+                changeTextColorOnLongPress(isStarting: false);
+              },
+              onLongPressEnd: (_) {
+                resetTextColor(isStarting: false);
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  destinationAirport.airportName.isEmpty
-                      ? const Column(
+                  widget.destinationAirport.airportName.isEmpty
+                      ? Column(
                           children: [
                             Text(
                               'To',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                  color: destinationTextColor, fontSize: 16),
                             ),
-                            SizedBox(height: 5),
+                            const SizedBox(height: 5),
                             Text(
                               'Select Destination',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: destinationTextColor,
                                 fontSize: 18,
                               ),
                             ),
@@ -101,36 +178,40 @@ class LocationWidget extends StatelessWidget {
                         )
                       : Column(
                           children: [
-                            const Text(
+                            Text(
                               'To',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
+                              style: TextStyle(
+                                color: destinationTextColor,
+                                fontSize: 16,
+                              ),
                             ),
                             const SizedBox(height: 5),
                             Text(
-                              destinationAirport.shortCode,
-                              style: const TextStyle(
+                              widget.destinationAirport.shortCode,
+                              style: TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: destinationTextColor,
                               ),
                             ),
                             Text(
-                              destinationAirport.city,
-                              style: const TextStyle(
-                                  color: Colors.white, fontSize: 14),
+                              widget.destinationAirport.city,
+                              style: TextStyle(
+                                color: destinationTextColor,
+                                fontSize: 14,
+                              ),
                             ),
                             Text(
-                              destinationAirport.airportName,
-                              style: const TextStyle(
-                                color: Colors.white,
+                              widget.destinationAirport.airportName,
+                              style: TextStyle(
+                                color: destinationTextColor,
                                 fontSize: 12,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 5),
                           ],
-                        )
+                        ),
                 ],
               ),
             ),
